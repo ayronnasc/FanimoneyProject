@@ -1,2 +1,2 @@
 *.pub
-mykey.txt
+.venv/
