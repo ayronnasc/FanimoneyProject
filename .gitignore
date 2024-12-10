@@ -1,9 +1,0 @@
-*.pub
-.__pycache__/
-.node_modules/
-package.json  
-instance
-package-lock.json
-.venv/
-.flaskr/
-
