@@ -32,6 +32,7 @@ function colorLink(){
 if(linkColor){
 linkColor.forEach(l=> l.classList.remove('active'))
 this.classList.add('active')
+	this.classList.add('click-disabled')
 }
 }
 linkColor.forEach(l=> l.addEventListener('click', colorLink))

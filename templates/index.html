@@ -1,54 +1,33 @@
-<!DOCTYPE html>
-
-<html>
-<head>
-  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
-  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"/>
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}"  />
-  <title>Fanimoney</title>
-</head>
-<body>
-  <body id="body-pd">
-    <header class="header" id="header" style="background-color: #EBE1AE;">
-      <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle" style="color:black;"></i> </div>
-        <p>NOME DO USUARIO</p>
-        <div class="header_img"> <img src="" alt="img perfil"> </div>
-    </header>
-    <div class="l-navbar" id="nav-bar"> 
-        <nav class="nav">
-            <div> <a href="#" class="nav_logo"> <i class='bx bx-money-withdraw nav_logo-icon'></i> <span class="nav_logo-name"><span style="color: #E0CB0B;">Fani</span>Money</span> </a>
-                <div class="nav_list"> <a href="#" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a>
-                    <a href="#" class="nav_link"> <i class='bx bx-objects-vertical-bottom nav_icon'></i> <span class="nav_name">Ganhos</span> </a>
-                    <a href="#" class="nav_link"> <i class='bx bx-line-chart-down nav_icon'></i>
-                    <span class="nav_name">Gastos</span> </a> <a href="#" class="nav_link">
-                        <i class='bx bx-wallet-alt nav_icon'></i>
-                    <span class="nav_name">Investimentos</span> </a> <a href="#" class="nav_link"> <i class='bx bx-cog nav_icon'></i>
-                    <span class="nav_name">Configurações</span> </a> <a href="#" class="nav_link"> <i class='bx bxs-sun nav_icon'></i>
-                    <span class="nav_name">Trocar Tema</span> </a> </div>
-            </div> <a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Meu Perfil</span> </a>
-        </nav>
-    </div>
-    <!--Container Main start-->
-    <div class="height-100 bg-dark" style="padding-top:1%;">
-      <div class="container aba" style="background-color: yellow;"> <h2>Aba de Ganhos</h2>
-        
-        
+{% extends "template.html" %}
+{% block content %} 
+<!--Container Main start-->
+     <div class="height-100 bg-light" style="padding-top:1%;">
+      <div class="container aba aba-ganho" style="background-color: #D6F5C5;"> 
+        <h1 class="aba-title">Últimos Ganhos </h1> <i class='bx bx-happy-beaming aba-icon'></i> 
+        <ul class="aba-unordered-list">
+          <li class="aba-item">Salario R$1500</li>
+          <li class="aba-item">Salario R$1500</li>
+          <li class="aba-item">Salario R$1500</li>          
+        </ul>
       </div>
-      <div class="container aba" style="background-color: red;"> <h2>Aba de Gastos</h2>
-        
+      <div class="container aba" style="background-color: #ffc5c5;">
+        <h1 class="aba-title">Últimos Gastos</h1> <i class='bx bx-meh-alt aba-icon' ></i>
+        <ul class="aba-unordered-list">
+          <li class="aba-item">Salario R$1500</li>
+          <li class="aba-item">Salario R$1500</li>
+          <li class="aba-item">Salario R$1500</li>          
+        </ul>        
         
       </div> 
-      <div class="container bg-primary aba"> <h2>Aba de Investimentos</h2>
-        
+      <div class="container aba" style="background-color: #cfeeff;">
+        <h1 class="aba-title">Investimentos</h1> <i class='bx bx-cool aba-icon' ></i>
+        <ul class="aba-unordered-list">
+          <li class="aba-item">Salario R$1500</li>
+          <li class="aba-item">Salario R$1500</li>
+          <li class="aba-item">Salario R$1500</li>          
+        </ul>
         
       </div>       
-    </div>
+    </div>  
     <!--Container Main end-->
-<script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>    
-    <script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  </body>
-</html>
+{% endblock %}
