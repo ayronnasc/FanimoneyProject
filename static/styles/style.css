@@ -7,7 +7,7 @@
 .aba{
   margin-top: 1%;
   border-radius: 10px;
-  padding:1%;  
+  padding:1%; :asd 
 }
 
 .aba-title{
@@ -29,3 +29,44 @@
   pointer-events: none;
   cursor: default;
   }
+
+    	.row{
+		    margin-top:40px;
+		    padding: 0 10px;
+		}
+		.clickable{
+		    cursor: pointer;   
+		}
+
+		.panel-heading div {
+			margin-top: -18px;
+			font-size: 15px;
+		}
+		.panel-heading div span{
+			margin-left:5px;
+		}
+		.panel-body{
+			display: none;
+		}
+.bg-gain-month{
+ background-color: #CEF7BF;
+ border-radius: 10px 10px 2px 2px;
+}
+
+.panel-title
+{
+ text-align:left;
+ color: #78C064;
+ font-weight: bold;
+ font-size: 30px;
+ margin-left: 10px;
+ 
+}
+
+.table-gain{
+	border-color: #78C064;
+}
+
+.table-gain tr{
+	
+}

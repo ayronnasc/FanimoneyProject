@@ -6,7 +6,9 @@
 
   <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"/>
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}"  />                                          <title>Fanimoney</title>                                                                                                      </head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}"  />  
+
+  <title>Fanimoney</title>                                                                                                      </head>
 <body class="bg-light">                                                                                                           <body id="body-pd">
     <header class="header" id="header" style="background-color: #EBE1AE;">
       <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle" style="color:black;"></i> </div>
@@ -16,18 +18,24 @@
 		    <div> <a href="#" class="nav_logo"> <i class='bx bx-money-withdraw nav_logo-icon'></i> <span class="nav_logo-name"><span style="color: #E0CB0B;">Fani</span>Money</span> </a>                                                                                       <div class="nav_list"> <a href="/" class="nav_link {% if rota == "index" %} active click-disabled {% endif %}"> <i class='bx bx-grid-alt nav_icon'></i> <span class=
 "nav_name">Dashboard</span> </a>
 			    <a href="/gain" class="nav_link  {% if rota == "gain" %} active click-disabled{% endif %}"> <i class='bx bx-objects-vertical-bottom nav_icon'></i> <span class="nav_name">
-Ganhos</span> </a><a href="#" class="nav_link"> <i class='bx bx-line-chart-down nav_icon'></i>
-                    <span class="nav_name">Gastos</span> </a> <a href="#" class="nav_link">
+Ganhos</span> </a><a href="/outgoing" class="nav_link {% if rota == "outgoing" %} active click-disabled {% endif %}" "> <i class='bx bx-line-chart-down nav_icon'></i>
+                    <span class="nav_name">Gastos</span> </a> <a href="/investment" class="nav_link {% if rota == "investment" %} active click-disabled {% endif %}"">
                         <i class='bx bx-wallet-alt nav_icon'></i>
-                    <span class="nav_name">Investimentos</span> </a> <a href="#" class="nav_link"> <i class='bx bx-cog nav_icon'
+                    <span class="nav_name">Investimentos</span> </a> <a href="/config" class="nav_link {% if rota == "config" %} active click-disabled {% endif %}" "> <i class='bx bx-cog nav_icon'
 ></i>
-                    <span class="nav_name">Configurações</span> </a> <a href="#" class="nav_link"> <i class='bx bxs-sun nav_icon
+                    <span class="nav_name">Configurações</span> </a> <a href="switch_theme" class="nav_link {% if rota == "switch_theme" %} active click-disabled {% endif %}" "> <i class='bx bxs-sun nav_icon
 '></i>
-                    <span class="nav_name">Trocar Tema</span> </a> </div>                                                                   </div> <a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Meu Perfil</span> </a>
+                    <span class="nav_name">Trocar Tema</span> </a> 
+<a href="/profile" class="nav_link {% if rota == 'profile' %} active click-disabled {% endif %}"> <i class='bx bx-user nav_icon'></i> <span class="nav_name ">Meu Perfil</span> </a>
+
+			    </div> 
+		    </div>
         </nav>                                                                                                                      </div>
     <!--Container Main start-->
 	{% block content %} {% endblock %}
     <!--Container Main end-->
 <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>                                         </body>                                                                                                                       </html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	</body>                                                                                                                       </html>

@@ -18,3 +18,24 @@ def index():
 @app.route('/gain')
 def gain():
     return render_template('gain.html', user_data=user_data, rota="gain")
+
+@app.route('/outgoing')
+def outgoing():
+    return render_template('outgoing.html', user_data=user_data, rota="outgoing")
+
+@app.route('/investment')
+def investment():
+    return render_template('investment.html', user_data=user_data, rota="investment")
+
+@app.route('/config')
+def config():
+    return render_template('config.html', user_data=user_data, rota='config')
+
+@app.route('/switch_theme')
+def switch_theme():
+    return render_template('index.html', user_data=user_data, rota='switch_theme')
+
+@app.route('/profile')
+def profile():
+    return render_template('profile.html', user_data=user_data, rota='profile')
+
