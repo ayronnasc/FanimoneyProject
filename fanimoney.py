@@ -1,7 +1,5 @@
 from flask import Flask, render_template, request, redirect, session, flash, url_for
-from classes.class_user import User
-from classes.class_gain import Gain
-from classes.class_outgoing import Outgoing
+from classes import User, Gain, Outgoing
 
 app = Flask(__name__, instance_relative_config=True)
 
