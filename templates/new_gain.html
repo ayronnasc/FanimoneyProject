@@ -1,0 +1,27 @@
+{% extends "template.html" %}
+{% block content %}
+<div class="container">
+	<h1>Adicione um Ganho</h1>
+	<form>
+  <div class="form-group">
+    <label for="input-name">Nome</label>
+    <input type="text" class="form-control" id="input-name" aria-describedby="nameHelp" placeholder="De um nome ao seu Ganho">
+  </div>
+  <div class="form-group">
+    <label for="input-type">Valor</label>
+    <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Digite o valor do Ganho">
+  </div>
+
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Fixo</label>
+  </div>
+<div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Variavel</label>
+</div>  
+Falta adicionar a data, seu animal kkkk
+  <button type="submit" class="btn btn-primary">Adicionar Ganho</button>
+</form>
+</div>
+{% endblock %}

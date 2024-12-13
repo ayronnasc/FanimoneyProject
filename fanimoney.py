@@ -17,6 +17,10 @@ def index():
 def gain():
     return render_template('gain.html', user_data=user_data, rota="gain")
 
+@app.route('/gain/new')
+def new_gain():
+    return render_template('new_gain.html', user_data=user_data, rota="gain") 
+
 @app.route('/outgoing')
 def outgoing():
     return render_template('outgoing.html', user_data=user_data, rota="outgoing")
