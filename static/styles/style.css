@@ -7,7 +7,7 @@
 .aba{
   margin-top: 1%;
   border-radius: 10px;
-  padding:1%; :asd 
+  padding:1%;
 }
 
 .aba-title{
@@ -19,10 +19,6 @@
   font-size: 40px;
   
   
-}
-
-.aba-ganho{
-
 }
 
 .click_disabled{
@@ -65,8 +61,41 @@
 
 .table-gain{
 	border-color: #78C064;
+
 }
 
-.table-gain tr{
-	
-}
+
+.dropdown-gain {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	cursor: pointer;
+  }
+  
+  .dropdown-gain-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 100%;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	padding: 12px 16px;
+	z-index: 1;
+  }
+
+  /*
+  .dropdown-gain:hover .dropdown-gain-content {
+	display: block;
+  }
+*/
+
+  .dropdown-gain h2{
+	background-color: #64C953;
+	padding: 10px;
+	color: white;
+	font-style: italic;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	font-size: 40px;
+	border-radius: 20px 20px 0 0;
+  }
+
+.dropdown-block{display: block;}

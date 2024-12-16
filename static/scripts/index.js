@@ -1,3 +1,17 @@
+const dropdownGain = document.getElementsByClassName("dropdown-gain");
+
+if(dropdownGain){
+	Array.prototype.forEach.call(dropdownGain, (el) => {
+		el.addEventListener('click', ()=>{
+			el.children[1].classList.toggle('dropdown-block');
+			})
+	});
+}
+
+// el => {
+
+// 	}
+
 
 
 document.addEventListener("DOMContentLoaded", function(event) {
@@ -44,7 +58,7 @@ linkColor.forEach(l=> l.addEventListener('click', colorLink))
 
 
 /**
-* TABLES GAIN AND OUTGOING AND INVESTMENTS
+* TABLES GAIN, OUTGOING AND INVESTMENTS
 *
 *
 * I don't recommend using this plugin on large tables, I just wrote it to make the demo useable. It will work fine for smaller tables 
@@ -104,3 +118,7 @@ $(function(){
 	});
 	$('[data-toggle="tooltip"]').tooltip();
 })
+
+
+
+
