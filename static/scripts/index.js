@@ -4,8 +4,9 @@ const dropdownGain = document.getElementsByClassName("dropdown-gain");
                 el.addEventListener('click', ()=>{
                        let h2 = el.children[0];
                        let gainContent = el.children[1];
+		
+			h2.classList.toggle('dropdown-title-transform');
 
-                        h2.classList.toggle('dropdown-title-transform');
                         gainContent.classList.toggle('dropdown-block');
                        })
                 }); //forEach

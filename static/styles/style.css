@@ -89,34 +89,38 @@
 */
 
 @keyframes transform-dropdown-title {
-  from { border-radius: 20px;}
-  to { border-radius: 20px 20px 0 0;}
+  from { border-radius: 20px; width: 50%;}
+  to { border-radius: 20px 20px 0 0; width:100%;}
 }  
 
 .dropdown-gain-title{
+	width: 50%;
         background-color: #64C953;
         padding: 10px;
         color: white;
         font-style: italic;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         font-size: 40px;
-        border-radius: 20px;
+	cursor: click;
+	border-radius: 20px;
         -webkit-user-select: none; /* Safari */
         -ms-user-select: none; /* IE 10 and IE 11 */
-        user-select: none; /* Standard syntax */
+	user-select: none; /* Standard syntax */
+	
   }
 
   .dropdown-title-transform{
+
           animation-name: transform-dropdown-title;
-          animation-duration: 0.2s;
+          animation-duration: 0.1s;
           animation-fill-mode: forwards;
+	  
   }
 
   .dropdown-title-transform-reverse
   {
         animation-name: transform-dropdown-title;
         animation-duration: 0.3s;
-        animation-fill-mode: forwards;
         animation-direction: alternate-reverse;
   }
 
