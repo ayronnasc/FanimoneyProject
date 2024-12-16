@@ -1,18 +1,15 @@
 const dropdownGain = document.getElementsByClassName("dropdown-gain");
+        if(dropdownGain){
+               Array.prototype.forEach.call(dropdownGain, (el) =>{
+                el.addEventListener('click', ()=>{
+                       let h2 = el.children[0];
+                       let gainContent = el.children[1];
 
-if(dropdownGain){
-	Array.prototype.forEach.call(dropdownGain, (el) => {
-		el.addEventListener('click', ()=>{
-			el.children[1].classList.toggle('dropdown-block');
-			})
-	});
-}
-
-// el => {
-
-// 	}
-
-
+                        h2.classList.toggle('dropdown-title-transform');
+                        gainContent.classList.toggle('dropdown-block');
+                       })
+                }); //forEach
+        }
 
 document.addEventListener("DOMContentLoaded", function(event) {
    
