@@ -1,25 +1,17 @@
 const dropdownGain = document.getElementsByClassName("dropdown-gain");
         if(dropdownGain){
                Array.prototype.forEach.call(dropdownGain, (el) =>{
-                el.addEventListener('click', ()=>{
-                       let h2 = el.children[0];
-                       let gainContent = el.children[1];
+				let h2 = el.children[0];
+                let gainContent = el.children[1];
+				
+				el.addEventListener('click', ()=>{
+					h2.classList.toggle('dropdown-title-transform');
+					gainContent.classList.toggle('dropdown-block')
+					gainContent.classList.toggle('dropdown-transition');
+                }) //click event
 
-			if(h2.classList.contains('dropdown-title-transform-reverse')){
-				h2.classList.remove('dropdown-title-transform-reverse');	
-			}
-
-			h2.classList.toggle('dropdown-title-transform');
-
-			if(!h2.classList.contains('dropdown-title-transform')){
-				h2.classList.toggle('dropdown-title-transform-reverse');
-			}
-
-			alert(h2.classList);
-                        gainContent.classList.toggle('dropdown-block');
-                       })
                 }); //forEach
-        }
+			}
 
 document.addEventListener("DOMContentLoaded", function(event) {
    
