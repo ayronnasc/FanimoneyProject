@@ -112,7 +112,7 @@
   .dropdown-title-transform{
 
           animation-name: transform-dropdown-title;
-          animation-duration: 0.1s;
+          animation-duration: 1s;
           animation-fill-mode: forwards;
 	  
   }
@@ -120,7 +120,7 @@
   .dropdown-title-transform-reverse
   {
         animation-name: transform-dropdown-title;
-        animation-duration: 0.3s;
+        animation-duration: 3s;
         animation-direction: alternate-reverse;
   }
 

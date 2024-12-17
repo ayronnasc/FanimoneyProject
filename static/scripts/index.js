@@ -4,9 +4,18 @@ const dropdownGain = document.getElementsByClassName("dropdown-gain");
                 el.addEventListener('click', ()=>{
                        let h2 = el.children[0];
                        let gainContent = el.children[1];
-		
+
+			if(h2.classList.contains('dropdown-title-transform-reverse')){
+				h2.classList.remove('dropdown-title-transform-reverse');	
+			}
+
 			h2.classList.toggle('dropdown-title-transform');
 
+			if(!h2.classList.contains('dropdown-title-transform')){
+				h2.classList.toggle('dropdown-title-transform-reverse');
+			}
+
+			alert(h2.classList);
                         gainContent.classList.toggle('dropdown-block');
                        })
                 }); //forEach
