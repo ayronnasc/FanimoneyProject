@@ -1,16 +1,52 @@
 const dropdownGain = document.getElementsByClassName("dropdown-gain");
         if(dropdownGain){
                Array.prototype.forEach.call(dropdownGain, (el) =>{
-				let h2 = el.children[0];
-                let gainContent = el.children[1];
-				
-				el.addEventListener('click', ()=>{
-					h2.classList.toggle('dropdown-title-transform');
-					gainContent.classList.toggle('dropdown-block')
-					gainContent.classList.toggle('dropdown-transition');
-                }) //click event
+					const h2 = el.children[0];
+					const gainContent = el.children[1];
+					const panel = el.getElementsByClassName("panel");
+					
+					Array.prototype.forEach.call(panel, (el) =>{
+						const table = el.children[2]
+
+						el.children[0].addEventListener('click', ()=>{
+							let scrollPos = window.scrollY;
+							table.classList.toggle('table-visible')
+							el.children[0].classList.toggle('panel-heading-transform');
+							window.scrollTo(scrollPos);
+						});
+
+						h2.addEventListener('transitionend', ()=>{
+							if(!h2.classList.contains('dropdown-title-transform')){
+								if(table.classList.contains('table-visible') && el.children[0].classList.contains('panel-heading-transform'))
+									{
+										el.children[0].classList.remove('panel-heading-transform');
+										table.classList.remove('table-visible');
+									}
+							}
+						});
+
+					});
+
+					h2.addEventListener('click', ()=>{
+						h2.classList.toggle('dropdown-title-transform');
+						h2.children[1].classList.toggle('bx-x');
+
+						el.classList.toggle('dropdown-transition');
+					}) //click event
+
+					h2.addEventListener('transitionend', ()=>{
+						if(h2.classList.contains('dropdown-title-transform')){
+							gainContent.style.display =  'block';
+							gainContent.classList.add('dropdown-content-transition');
+						}else {
+							gainContent.classList.remove('dropdown-content-transition');
+							gainContent.style.display =  'none';
+							
+						}
+					})
 
                 }); //forEach
+				
 			}
 
 document.addEventListener("DOMContentLoaded", function(event) {
