@@ -10,15 +10,51 @@
   padding:1%;
 }
 
+.aba-content{
+	display:flex;
+	flex-flow: row wrap;
+}
+
 .aba-title{
-  font-size: 25px;
- display: inline; 
+  font-size: 45px;
+ display: block; 
+ margin-bottom: 30px;
+}
+
+.aba-total div{
+	margin: 10px 5px;
+}
+
+.aba-subtitle-total{
+	font-size: 25px;
+	font-weight: 300;
+}
+
+.aba-value{
+	margin: 5px 0;
+}
+
+.aba-total{
+	display:block;
+	margin:10px 0px;
+}
+.aba-total h2{
+	font-weight: 900;
+	font-size: 30px;
 }
 
 .aba-icon{
   font-size: 40px;
   
   
+}
+
+.aba-news{
+	margin: 0 4%;
+}
+
+.aba-news h2{
+	font-size: 30px;
 }
 
 .click_disabled{
