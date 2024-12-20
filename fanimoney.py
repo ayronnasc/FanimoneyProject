@@ -2,12 +2,12 @@ from flask import Flask, render_template, request, redirect, session, flash, url
 from classes import User, Gain, Outgoing
 
 app = Flask(__name__, instance_relative_config=True)
+app.secret_key = 'ayron'
 
 #data
 user1 = User('Ayron',15,'M','123')
-gain1 = Gain('Ayron', 'salario', 'fixo', 1000, '12/12/24')
 outgoing1 = Outgoing('Ayron', 'Conta de Luz', 'fixo', 0, 200, '12/07/24')
-user_data = [user1,gain1,outgoing1]
+user_data = [user1,outgoing1]
 
 @app.route('/')
 def index():
@@ -17,8 +17,27 @@ def index():
 def gain():
     return render_template('gain.html', user_data=user_data, rota="gain")
 
-@app.route('/gain/new')
+@app.route('/gain/new', methods=['GET', 'POST'])
 def new_gain():
+    if request.method == 'POST':
+        name        = request.form.get('gainName')
+        desc        = request.form.get('gainDesc')        
+        date        = request.form.get('gainDate')
+        value       = request.form.get('gainValue')
+        gain_type   = request.form.get('gainType')
+
+        #Verifying data
+        for data in [name, desc, date, value, gain_type]:
+            if not data:
+                flash('Todos os campos são obrigatórios!', 'danger')
+                return redirect(url_for('new_gain'))
+        
+        #turn data in object format
+        gain = Gain(user1.name, name, gain_type, value, date, desc)
+
+        flash('Ganho cadastrado com sucesso!', 'success')
+        redirect(url_for('index'))
+
     return render_template('new_gain.html', user_data=user_data, rota="gain") 
 
 @app.route('/outgoing')
