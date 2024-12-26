@@ -6,8 +6,8 @@ app.secret_key = 'ayron'
 
 #data
 user1 = User('Ayron',15,'M','123')
-outgoing1 = Outgoing('Ayron', 'Conta de Luz', 'fixo', 0, 200, '12/07/24')
-user_data = [user1,outgoing1]
+user_data = [user1]
+gain_data = []
 
 @app.route('/')
 def index():
@@ -15,7 +15,7 @@ def index():
 
 @app.route('/gain')
 def gain():
-    return render_template('gain.html', user_data=user_data, rota="gain")
+    return render_template('gain.html', user_data=user_data, gain_data=gain_data, rota="gain")
 
 @app.route('/gain/new', methods=['GET', 'POST'])
 def new_gain():
@@ -33,10 +33,11 @@ def new_gain():
                 return redirect(url_for('new_gain'))
         
         #turn data in object format
-        gain = Gain(user1.name, name, gain_type, value, date, desc)
+        gain = Gain(user1.name, name, desc, gain_type, value, date)
+        gain_data.append(gain)
 
         flash('Ganho cadastrado com sucesso!', 'success')
-        redirect(url_for('index'))
+        return redirect(url_for('gain'))
 
     return render_template('new_gain.html', user_data=user_data, rota="gain") 
 
