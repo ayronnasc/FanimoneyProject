@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, session, flash, url_for
 from classes import User, Gain, Outgoing
+from datetime import datetime
 
 app = Flask(__name__, instance_relative_config=True)
 app.secret_key = 'ayron'
@@ -8,6 +9,8 @@ app.secret_key = 'ayron'
 user1 = User('Ayron',15,'M','123')
 user_data = [user1]
 gain_data = []
+gain = Gain('Ayron', 'Venda', 'Venda de um Carro', 'Variavel', 25000, '2024-12-26')
+gain_data.append(gain)
 
 @app.route('/')
 def index():
@@ -15,7 +18,24 @@ def index():
 
 @app.route('/gain')
 def gain():
-    return render_template('gain.html', user_data=user_data, gain_data=gain_data, rota="gain")
+    gains = []
+    for gain in gain_data:
+        year = datetime.strptime(gain.date, '%Y-%m-%d').year
+        month = datetime.strptime(gain.date, '%Y-%m-%d').month
+        if not year in gains:
+            gains[year]
+        if year in gains:
+            if not month in gains[year][month]:
+                gains[year][month].append(gain)
+
+    return render_template('gain.html', user_data=user_data, gain_data=gains, rota="gain")
+
+@app.context_processor
+def utility_processor():
+    def get_date_format(date):
+        return datetime.strptime(date, '%Y-%m-%d')
+
+    return dict(get_date_format=get_date_format)
 
 @app.route('/gain/new', methods=['GET', 'POST'])
 def new_gain():
