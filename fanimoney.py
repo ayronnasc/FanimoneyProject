@@ -18,17 +18,15 @@ def index():
 
 @app.route('/gain')
 def gain():
-    gains = []
+    gains = {}
+
     for gain in gain_data:
         year = datetime.strptime(gain.date, '%Y-%m-%d').year
         month = datetime.strptime(gain.date, '%Y-%m-%d').month
-        if not year in gains:
-            gains[year]
-        if year in gains:
-            if not month in gains[year][month]:
-                gains[year][month].append(gain)
+        gains[year] = { month : gain }
+                        
 
-    return render_template('gain.html', user_data=user_data, gain_data=gains, rota="gain")
+    return render_template('gain.html', user_data=user_data, gain_data=gains, other=gain_data, rota="gain")
 
 @app.context_processor
 def utility_processor():
