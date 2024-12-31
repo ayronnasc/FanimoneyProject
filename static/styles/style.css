@@ -253,3 +253,20 @@
 .form-group{
 margin: 10px 0;
 }
+
+.new-gain-button{
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
+
+.new-gain-button button{
+	width: 80px;
+	height: 80px;
+	background-color: #78C064;
+	border-radius: 40px;
+}
+
+.new-gain-button i{
+	font-size: 40px;
+}

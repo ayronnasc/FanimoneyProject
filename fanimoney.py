@@ -10,7 +10,12 @@ user1 = User('Ayron',15,'M','123')
 user_data = [user1]
 gain_data = []
 gain = Gain('Ayron', 'Venda', 'Venda de um Carro', 'Variavel', 25000, '2024-12-26')
+gain2 = Gain('Ayron', 'Venda', 'Venda de uma Moto', 'Variavel', 3000, '2025-12-27')
+gain3 = Gain('Ayron', 'Venda', 'Venda de uma imovel', 'Variavel', 300000, '2024-11-27')
+
 gain_data.append(gain)
+gain_data.append(gain2)
+gain_data.append(gain3)
 
 @app.route('/')
 def index():
@@ -19,13 +24,12 @@ def index():
 @app.route('/gain')
 def gain():
     gains = {}
-
+    
     for gain in gain_data:
         year = datetime.strptime(gain.date, '%Y-%m-%d').year
-        month = datetime.strptime(gain.date, '%Y-%m-%d').month
-        gains[year] = { month : gain }
-                        
-
+        month = datetime.strptime(gain.date, '%Y-%m-%d').month    
+        gains[year] = {} 
+                    
     return render_template('gain.html', user_data=user_data, gain_data=gains, other=gain_data, rota="gain")
 
 @app.context_processor
