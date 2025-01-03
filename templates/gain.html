@@ -4,19 +4,20 @@
 <div class="container"> 
 
 	<h1 class="title-gain">Meus Ganhos</h1>
-	{{ gain_data }}
 	
 	{% if gain_data %}
 		{% for year in gain_data %}
 			<div class="dropdown-gain">
 				<span class="dropdown-gain-title"><h2 >{{ year }}</h2><i class='bx bx-chevron-down' ></i></span>
 			<div class="dropdown-gain-content">
+				
+				{% for month in gain_data[year] %}
 				<div class="col-md-6">
-					{{ gain_data[year].keys() }}
+						
 					<div class="panel panel-success" style="display: inline;">
-					{% for month in gain_data[year].keys() %}		
+						
 						<div class="panel-heading bg-gain-month">
-							<h3 class="panel-title"{{ month }}</h3>
+							<h3 class="panel-title"> {{ get_date_format(month) }} </h3>
 							<div class="pull-right">
 								<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
 									<i class="glyphicon glyphicon-filter"></i>
@@ -28,6 +29,7 @@
 							<input type="text" class="form-control" id="task-table-filter" data-action="filter" data-filters="#task-table" placeholder="Filter Tasks" />
 						</div>
 						<table class="table table-hover table-gain" id="task-table">
+							{% for gain in gain_data[year][month] %}
 							<thead>
 								<tr>
 									<th>Data</th>
@@ -38,19 +40,21 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
+									<td>{{ gain.date }}</td>
+									<td>{{ gain.name }}</td>
+									<td>{{ gain.Type }}</td>
+									<td>{{ gain.value }}</td>
 								</tr>
 							</tbody>
+						{% endfor %}
 						</table>
 					</div>
 				</div>
-				
+
+		{% endfor %}	
 			</div>
 			</div>
-			{% endfor %}
+
 		{% endfor %}
 	{% endif %}
 <a href="/gain/new" class="new-gain-button"><button type="button" class="btn btn-success"> <i class='bx bx-plus-circle'></i> </button></a>

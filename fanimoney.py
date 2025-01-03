@@ -58,8 +58,30 @@ def gain():
 @app.context_processor
 def utility_processor():
     def get_date_format(date):
-        return datetime.strptime(date, '%Y-%m-%d')
-
+        if date == 1:
+            return "Janeiro"
+        elif date == 2:
+            return "Fevereiro"
+        elif date == 3:
+            return "Março"
+        elif date == 4:
+            return "Abril"
+        elif date == 5:
+            return "Maio"
+        elif date == 6:
+            return "Junho"
+        elif date == 7:
+            return "Julho"
+        elif date == 8:
+            return "Agosto"
+        elif date == 9:
+            return "Setembro"
+        elif date == 10:
+            return "Outubro"
+        elif date == 11:
+            return "Novembro"
+        elif date == 12:
+            return "Dezembro"
     return dict(get_date_format=get_date_format)
 
 @app.route('/gain/new', methods=['GET', 'POST'])
