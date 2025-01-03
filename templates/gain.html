@@ -17,7 +17,7 @@
 					<div class="panel panel-success" style="display: inline;">
 						
 						<div class="panel-heading bg-gain-month">
-							<h3 class="panel-title"> {{ get_date_format(month) }} </h3>
+							<h3 class="panel-title"> {{ get_date_format("M",month) }} </h3>
 							<div class="pull-right">
 								<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
 									<i class="glyphicon glyphicon-filter"></i>
@@ -40,10 +40,15 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td>{{ gain.date }}</td>
+									<td>{{ get_date_format("D/M/Y", gain.date) }}</td>
 									<td>{{ gain.name }}</td>
-									<td>{{ gain.Type }}</td>
-									<td>{{ gain.value }}</td>
+				<td>{% if gain.type == "fixed" %} 
+					Fixo 
+			            	{% elif gain.type == "variable"%} 
+				     		Variável   
+				    {% endif %}
+				</td>
+									<td> {{ get_currency_format(gain.value) }}</td>
 								</tr>
 							</tbody>
 						{% endfor %}

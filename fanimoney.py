@@ -1,6 +1,11 @@
 from flask import Flask, render_template, request, redirect, session, flash, url_for
 from classes import User, Gain, Outgoing
 from datetime import datetime
+import locale
+import currency
+from babel.dates import format_date, format_datetime, format_time
+
+locale.setlocale(locale.LC_ALL, '')
 
 app = Flask(__name__, instance_relative_config=True)
 app.secret_key = 'ayron'
@@ -9,11 +14,11 @@ app.secret_key = 'ayron'
 user1 = User('Ayron',15,'M','123')
 user_data = [user1]
 gain_data = []
-gain = Gain('Ayron', 'Venda', 'Venda de um Carro', 'Variavel', 25000, '2024-12-26')
-gain2 = Gain('Ayron', 'Venda', 'Venda de uma Moto', 'Variavel', 3000, '2025-12-27')
-gain3 = Gain('Ayron', 'Venda', 'Venda de uma imovel', 'Variavel', 300000, '2024-11-27')
-gain4 = Gain('Ayron', 'Venda', 'Venda de um apartamento', 'Variavel', 900000, '2024-12-30')
-gain5 = Gain('Ayron', 'Venda', 'Venda de um Computador', 'Variavel', 4000, '2024-12-30')
+gain = Gain('Ayron', 'Venda', 'Venda de um Carro', 'variable', 25000, '2024-12-26')
+gain2 = Gain('Ayron', 'Venda', 'Venda de uma Moto', 'variable', 3000, '2025-12-27')
+gain3 = Gain('Ayron', 'Venda', 'Venda de uma imovel', 'variable', 300000, '2024-11-27')
+gain4 = Gain('Ayron', 'Venda', 'Venda de um apartamento', 'variable', 900000, '2024-12-30')
+gain5 = Gain('Ayron', 'Venda', 'Venda de um Computador', 'variable', 4000, '2024-12-30')
 
 gain_data.append(gain)
 gain_data.append(gain2)
@@ -57,39 +62,48 @@ def gain():
 
 @app.context_processor
 def utility_processor():
-    def get_date_format(date):
-        if date == 1:
-            return "Janeiro"
-        elif date == 2:
-            return "Fevereiro"
-        elif date == 3:
-            return "Março"
-        elif date == 4:
-            return "Abril"
-        elif date == 5:
-            return "Maio"
-        elif date == 6:
-            return "Junho"
-        elif date == 7:
-            return "Julho"
-        elif date == 8:
-            return "Agosto"
-        elif date == 9:
-            return "Setembro"
-        elif date == 10:
-            return "Outubro"
-        elif date == 11:
-            return "Novembro"
-        elif date == 12:
-            return "Dezembro"
+    def get_date_format( Format , date):
+        if Format == "M":
+            if date == 1:
+                return "Janeiro"
+            elif date == 2:
+                return "Fevereiro"
+            elif date == 3:
+                return "Março"
+            elif date == 4:
+                return "Abril"
+            elif date == 5:
+                return "Maio"
+            elif date == 6:
+                return "Junho"
+            elif date == 7:
+                return "Julho"
+            elif date == 8:
+                return "Agosto"
+            elif date == 9:
+                return "Setembro"
+            elif date == 10:
+                return "Outubro"
+            elif date == 11:
+                return "Novembro"
+            elif date == 12:
+                return "Dezembro"
+        elif Format == "D/M/Y":
+            return format_date(date, locale='de_DE')           
     return dict(get_date_format=get_date_format)
+
+@app.context_processor
+def utility_processor():
+    def get_currency_format(amount):
+        return currency.pretty(amount, 'BRL')
+    return dict(get_currency_format=get_currency_format)
 
 @app.route('/gain/new', methods=['GET', 'POST'])
 def new_gain():
     if request.method == 'POST':
         name        = request.form.get('gainName')
         desc        = request.form.get('gainDesc')        
-        date        = request.form.get('gainDate')
+        date        = date(datetime.strptime(request.form.get('gainDate')).year, (datetime.strptime(request.form.get('gainDate')).month, (datetime.strptime(request.form.get('gainDate')).day ))
         value       = request.form.get('gainValue')
         gain_type   = request.form.get('gainType')
 
