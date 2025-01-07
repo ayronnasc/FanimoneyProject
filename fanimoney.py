@@ -5,7 +5,7 @@ import locale
 import currency
 from babel.dates import format_date, format_datetime, format_time
 
-locale.setlocale(locale.LC_ALL, '')
+currency.info('BRL')
 
 app = Flask(__name__, instance_relative_config=True)
 app.secret_key = 'ayron'
@@ -89,13 +89,18 @@ def utility_processor():
             elif date == 12:
                 return "Dezembro"
         elif Format == "D/M/Y":
-            return format_date(date, locale='de_DE')           
+            date_obj = datetime.strptime(date, '%Y-%m-%d')
+            return f'{date_obj.day}/{date_obj.month}'
+                
     return dict(get_date_format=get_date_format)
 
 @app.context_processor
 def utility_processor():
     def get_currency_format(amount):
-        return currency.pretty(amount, 'BRL')
+        number = currency.pretty(amount, 'BRL') 
+        return str(number).replace(",",".")
+        #return currency.pretty(number, 'BRL')
+        return number
     return dict(get_currency_format=get_currency_format)
 
 @app.route('/gain/new', methods=['GET', 'POST'])
@@ -103,9 +108,12 @@ def new_gain():
     if request.method == 'POST':
         name        = request.form.get('gainName')
         desc        = request.form.get('gainDesc')        
-        date        = date(datetime.strptime(request.form.get('gainDate')).year, (datetime.strptime(request.form.get('gainDate')).month, (datetime.strptime(request.form.get('gainDate')).day ))
+        date        = request.form.get('gainDate')
         value       = request.form.get('gainValue')
         gain_type   = request.form.get('gainType')
+        
+
+
 
         #Verifying data
         for data in [name, desc, date, value, gain_type]:
